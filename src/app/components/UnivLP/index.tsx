@@ -117,7 +117,8 @@ const Univ = () => {
 
   const circulatingSupply = Number(uiTotalSupply) - Number(uiTotalNXDBurned);
 
-  const nxdFloorPriceInDXN = 33.33 / circulatingSupply;
+  const nxdFloorPriceInDXN =
+    (25000000 / circulatingSupply / circulatingSupply) * 1.003;
 
   return (
     <div className='mt-4 lg:mt-8 mb-6 mx-2 lg:mx-auto lg:max-w-7xl bg-white rounded-3xl shadow-lg px-4 lg:px-8 py-4 lg:py-8 flex flex-col lg:flex-row'>
@@ -161,7 +162,7 @@ const Univ = () => {
               <div className='flex mb-4'>
                 <p className='flex-grow text-[#90A6B3]'>Price Floor NXD/DXN</p>
                 <p className='ml-auto font-bold'>
-                  1 NXD = {formattedNum(nxdFloorPriceInDXN)} DXN (
+                  1 NXD = {nxdFloorPriceInDXN.toFixed(8).toLocaleString()} DXN (
                   {formattedNum(nxdFloorPriceInDXN * dxnPriceInUSD)} USD)
                 </p>
               </div>

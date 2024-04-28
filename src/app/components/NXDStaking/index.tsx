@@ -384,8 +384,13 @@ const NXDStaking = () => {
             </p>
             <p className='ml-auto font-bold'>
               {Number(nxdTotalSupplyUiAmount) > 0
-                ? (Number(uiTotalStakedData) / Number(nxdTotalSupplyUiAmount)) *
-                  (100).toFixed(6).toString()
+                ? (
+                    (Number(uiTotalStakedData) /
+                      Number(nxdTotalSupplyUiAmount)) *
+                    100
+                  )
+                    .toFixed(6)
+                    .toString()
                 : 0}
               %
             </p>

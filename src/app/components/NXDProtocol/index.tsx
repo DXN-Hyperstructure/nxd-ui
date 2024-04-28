@@ -350,7 +350,7 @@ const Protocol = () => {
                   Price Floor NXD in DXN
                 </p>
                 <p className='ml-auto font-bold'>
-                  {formattedNum(nxdFloorPriceInDXN)} DXN
+                  {nxdFloorPriceInDXN.toFixed(8).toLocaleString()} DXN
                 </p>
               </div>
             </div>
