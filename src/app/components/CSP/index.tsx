@@ -432,7 +432,6 @@ const CappedStakingPeriod = () => {
     abi: NXD_PROTOCOL_ABI,
     address: NXD_PROTOCOL_ADDRESS,
     functionName: 'endTime',
-    chainId: sepolia.id,
   });
 
   const currentMintRatio = useCurrentMintRatio({
@@ -501,7 +500,7 @@ const CappedStakingPeriod = () => {
                 ) : (
                   ''
                 )}
-                {!startTimeData ? <span>Not Started</span> : ''}
+                {!startTimeData ? <span></span> : ''}
               </p>
             </div>
             <div className='flex mb-4'>
