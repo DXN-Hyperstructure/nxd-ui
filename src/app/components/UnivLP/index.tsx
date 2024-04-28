@@ -132,10 +132,9 @@ const Univ = () => {
           <h2 className='text-xs font-bold text-gray-800'>Trade NXD/DXN</h2>
 
           <Link
-            // href={`https://app.uniswap.org/#/swap?inputCurrency=${DXN_ERC20_ADDRESS}&outputCurrency=${NXD_ERC20_ADDRESS}&chain=mainnet`}
-            href={`#`}
-            // target='_blank'
-            // rel='noreferrer noopener'
+            href={`https://app.uniswap.org/#/swap?inputCurrency=${DXN_ERC20_ADDRESS}&outputCurrency=${NXD_ERC20_ADDRESS}&chain=mainnet`}
+            target='_blank'
+            rel='noreferrer noopener'
           >
             <button className='w-full lg:w-full rounded-[8px] bg-[#000307] text-white px-9 py-4 mt-6 '>
               TRADE NXD
