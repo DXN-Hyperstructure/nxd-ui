@@ -12,6 +12,25 @@ export const metadata: Metadata = {
   title: 'NXD Protocol',
   description:
     'NXD Protocol empowers the economics of DXN Protocol by introducing the NXD token. Fair minted, immutable and open source.',
+  twitter: {
+    card: 'summary_large_image',
+  },
+
+  openGraph: {
+    type: 'website',
+    description:
+      'NXD Protocol empowers the economics of DXN Protocol by introducing the NXD token. Fair minted, immutable and open source.',
+    title: 'NXD Protocol',
+    locale: 'en_US',
+    url: 'https://dxn-hyperstructure.com/',
+    siteName: 'NXD Protocol',
+    images: [
+      {
+        url: 'https://dxn-hyperstructure.com/og-image.png',
+        alt: 'NXD Protocol',
+      },
+    ],
+  },
 };
 const scriptTxt = `
 (function () {
