@@ -31,7 +31,7 @@ export const formattedNum = (
   if (num > 1000 || !hideSmallAmounts) {
     return usd
       ? formatDollarAmount(num, 0)
-      : Number(parseFloat(num.toString()).toFixed(precision)).toString();
+      : Number(parseFloat(num.toString()).toFixed(precision)).toLocaleString();
   }
 
   if (usd) {
