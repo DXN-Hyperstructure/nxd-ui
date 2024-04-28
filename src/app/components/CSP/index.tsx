@@ -516,7 +516,7 @@ const CappedStakingPeriod = () => {
               </p>
               <p className='ml-auto font-bold'>
                 {formattedNum(nxdTotalClaimed?.toString()) || 0} /{' '}
-                {NXD_MAX_REWARDS_SUPPLY}
+                {formattedNum(NXD_MAX_REWARDS_SUPPLY)}
               </p>
             </div>
             <div className='flex mb-4'>

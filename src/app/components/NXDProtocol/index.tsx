@@ -199,10 +199,10 @@ const Protocol = () => {
             DXN Re-Staked and Compounded
           </h2>
           <div className='flex mb-2'>
-            <p className='flex-grow text-[#90A6B3]'>
+            <p className='flex-grow text-[#90A6B3] '>
               Total DXN Compounded in the DXN Staking Vault
             </p>
-            <p className='ml-auto font-bold'>
+            <p className='ml-auto font-bold text-right '>
               {formattedNum(totalDXnCompoundedDSVNoPS)} DXN (
               {totalDXnCompoundedDSVNoPSUSD} USD)
             </p>
@@ -219,8 +219,8 @@ const Protocol = () => {
           <div className='flex mb-5'>
             <p className='flex-grow text-[#90A6B3]'>Total DXN Compounded</p>
             <p className='ml-auto font-bold'>
-              {formattedNum(totalDXnCompoundedDSVPS)} DXN{' '}
-              {totalDXnCompoundedDSVPSUSD} USD
+              {formattedNum(totalDXnCompoundedDSVPS)} DXN (
+              {totalDXnCompoundedDSVPSUSD} USD)
             </p>
           </div>
           <div className='flex mb-5'>
