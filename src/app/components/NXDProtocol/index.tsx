@@ -84,15 +84,17 @@ const Protocol = () => {
     ? divideByDecimals(dxnTotalSupplyData.toString(), DXN_DECIMALS)
     : '0';
 
-  const { data: totalNXDBurnedData, isLoading: totalNXDBurnedDataIsLoading } =
-    useReadContract({
-      address: NXD_PROTOCOL_ADDRESS,
-      abi: NXD_PROTOCOL_ABI,
-      functionName: 'totalNXDBurned',
-    });
+  const {
+    data: totalNXDBurnedDataFromProtocol,
+    isLoading: totalNXDBurnedDataFromProtocolIsLoading,
+  } = useReadContract({
+    address: NXD_PROTOCOL_ADDRESS,
+    abi: NXD_PROTOCOL_ABI,
+    functionName: 'totalNXDBurned',
+  });
 
-  const uiTotalNXDBurned = totalNXDBurnedData
-    ? divideByDecimals(totalNXDBurnedData.toString(), DXN_DECIMALS)
+  const uiTotalNXDBurned = totalNXDBurnedDataFromProtocol
+    ? divideByDecimals(totalNXDBurnedDataFromProtocol.toString(), DXN_DECIMALS)
     : '0';
 
   const uiTotalNXDBurnedUSD = formattedNum(
@@ -153,7 +155,8 @@ const Protocol = () => {
 
   const circulatingSupply = Number(uiTotalSupplyNXD) - Number(totalNXDBurn);
 
-  const nxdFloorPriceInDXN = 33.333333 / circulatingSupply;
+  const nxdFloorPriceInDXN =
+    (25000000 / circulatingSupply / circulatingSupply) * 1.003;
 
   const {
     data: totalDXNDepositedLMPData,
