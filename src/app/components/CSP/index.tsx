@@ -346,7 +346,8 @@ const CappedStakingPeriod = () => {
   const nxdTotalClaimed = Number(nxdTotalSupplyUiAmount) - 5000;
 
   const totalNxdClaimedPercentage = (
-    Number(nxdTotalClaimed) / NXD_MAX_REWARDS_SUPPLY
+    (Number(nxdTotalClaimed) / NXD_MAX_REWARDS_SUPPLY) *
+    100
   ).toFixed(5);
 
   const {
