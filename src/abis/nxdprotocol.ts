@@ -336,6 +336,13 @@ export const NXD_PROTOCOL_ABI = [
   },
   {
     'type': 'function',
+    'name': 'userTotalBonus',
+    'inputs': [{ 'name': '', 'type': 'address', 'internalType': 'address' }],
+    'outputs': [{ 'name': '', 'type': 'uint256', 'internalType': 'uint256' }],
+    'stateMutability': 'view',
+  },
+  {
+    'type': 'function',
     'name': 'userTotalMintedNoBonus',
     'inputs': [{ 'name': '', 'type': 'address', 'internalType': 'address' }],
     'outputs': [{ 'name': '', 'type': 'uint256', 'internalType': 'uint256' }],

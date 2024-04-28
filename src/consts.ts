@@ -1,18 +1,25 @@
-import { Address, zeroAddress } from 'viem';
-// export const DXN_ERC20_ADDRESS: Address =
-//   '0x80f0C1c49891dcFDD40b6e0F960F84E6042bcB6F';
+import { Address } from 'viem';
+export const DXN_ERC20_ADDRESS: Address =
+  '0x80f0C1c49891dcFDD40b6e0F960F84E6042bcB6F';
 
-// export const NXD_ERC20_ADDRESS: Address =
-//   '0x6E8727E7d587701dA8C2F5C34d8CF9fe79cC01cD';
+export const NXD_ERC20_ADDRESS: Address =
+  '0x70536D44820fE3ddd4A2e3eEdbC937b8B9D566C7';
+export const TAX_RECIPIENT_ADDRESS: Address =
+  '0x61e0318C8d5A855D63D989b02D859Aae5020b308';
 
-// export const NXD_PROTOCOL_ADDRESS: Address =
-//   '0xEaA95FF42CE9b59D539805b7220a63E426566830';
-// export const NXD_STAKING_VAULT_ADDRESS: Address =
-//   '0x4AD9Bc9487294c2c4C7978e7e351ea1087A3333E';
+export const NXD_PROTOCOL_ADDRESS: Address =
+  '0xE05430D42842C7B757E5633D19ca65350E01aE11';
 
-export const NXD_DXN_UNI_LP_ADDRESS: Address = zeroAddress;
-// export const DXN_WETH_UNI_LP_ADDRESS: Address =
-//   '0x7F808fD904FFA3eb6A6F259e6965Fb1466A05372';
+export const NXD_STAKING_VAULT_ADDRESS: Address =
+  '0xa1B56E42137D06280E34B3E1352d80Ac3BECAF79';
+
+export const DBXEN_ADDRESS: Address =
+  '0x96b07b04b1ee09A7b6271e591F79206C54Ec6d06';
+
+export const NXD_DXN_UNI_LP_ADDRESS: Address =
+  '0x98134CDE70ff7280bb4b9f4eBa2154009f2C13aC';
+export const DXN_WETH_UNI_LP_ADDRESS: Address =
+  '0x7F808fD904FFA3eb6A6F259e6965Fb1466A05372';
 export const ETH_USDC_UNI_LP_ADDRESS: Address =
   '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640';
 // export const TAX_RECIPIENT_ADDRESS: Address =
@@ -60,18 +67,18 @@ export const ETH_USDC_UNI_LP_ADDRESS: Address =
 //   '0x792612D3165103557619A79Dd1AEC4FcF22AC756';
 
 // SEPOLIA
-export const DXN_WETH_UNI_LP_ADDRESS: Address = zeroAddress;
+// export const DXN_WETH_UNI_LP_ADDRESS: Address = zeroAddress;
 
-export const DXN_ERC20_ADDRESS: Address = zeroAddress;
+// export const DXN_ERC20_ADDRESS: Address = zeroAddress;
 
-export const NXD_ERC20_ADDRESS: Address = zeroAddress;
-export const TAX_RECIPIENT_ADDRESS: Address = zeroAddress;
+// export const NXD_ERC20_ADDRESS: Address = zeroAddress;
+// export const TAX_RECIPIENT_ADDRESS: Address = zeroAddress;
 
-export const NXD_PROTOCOL_ADDRESS: Address = zeroAddress;
+// export const NXD_PROTOCOL_ADDRESS: Address = zeroAddress;
 
-export const NXD_STAKING_VAULT_ADDRESS: Address = zeroAddress;
+// export const NXD_STAKING_VAULT_ADDRESS: Address = zeroAddress;
 
-export const DBXEN_ADDRESS: Address = zeroAddress;
+// export const DBXEN_ADDRESS: Address = zeroAddress;
 
 export const NXD_MAX_REWARDS_SUPPLY = 730000;
 

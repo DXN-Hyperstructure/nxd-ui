@@ -340,12 +340,13 @@ const CappedStakingPeriod = () => {
   };
 
   const nxdTotalSupplyUiAmount = nxdTotalSupplyData
-    ? Number(divideByDecimals(nxdTotalSupplyData.toString(), NXD_DECIMALS)) -
-      5000
+    ? Number(divideByDecimals(nxdTotalSupplyData.toString(), NXD_DECIMALS))
     : '0';
 
+  const nxdTotalClaimed = Number(nxdTotalSupplyUiAmount) - 5000;
+
   const totalNxdClaimedPercentage = (
-    Number(nxdTotalSupplyUiAmount) / NXD_MAX_REWARDS_SUPPLY
+    Number(nxdTotalClaimed) / NXD_MAX_REWARDS_SUPPLY
   ).toFixed(5);
 
   const {
@@ -402,6 +403,18 @@ const CappedStakingPeriod = () => {
       args: [connectedUserAddress || zeroAddress],
     });
 
+  const { data: userTotalBonusData, refetch: refetchUserTotalBonus } =
+    useReadContract({
+      abi: NXD_PROTOCOL_ABI,
+      address: NXD_PROTOCOL_ADDRESS,
+      functionName: 'userTotalBonus',
+      args: [connectedUserAddress || zeroAddress],
+    });
+
+  const uiUserTotalBonus = userTotalBonusData
+    ? divideByDecimals(userTotalBonusData.toString(), NXD_DECIMALS)
+    : 0;
+
   const uiReferrerBonusReceived = referrerBonusReceived
     ? divideByDecimals(referrerBonusReceived.toString(), NXD_DECIMALS)
     : 0;
@@ -433,6 +446,31 @@ const CappedStakingPeriod = () => {
     'MINT' | 'APPROVE' | '' | 'CLAIM'
   >('');
 
+  const {
+    data: totalUnclaimedReferralRewardsData,
+    refetch: refetchTotalUnclaimedReferralRewards,
+  } = useReadContract({
+    abi: NXD_PROTOCOL_ABI,
+    address: NXD_PROTOCOL_ADDRESS,
+    functionName: 'totalUnclaimedReferralRewards',
+  });
+
+  const uiTotalUnclaimedReferralRewards = totalUnclaimedReferralRewardsData
+    ? divideByDecimals(
+        totalUnclaimedReferralRewardsData.toString(),
+        NXD_DECIMALS
+      )
+    : 0;
+
+  const remainingSupplyMintable =
+    750000 -
+    Number(nxdTotalSupplyUiAmount) -
+    15000 -
+    5000 -
+    Number(uiTotalUnclaimedReferralRewards);
+
+  const allNXDMinted = remainingSupplyMintable == 0;
+
   return (
     <div className='mt-4 lg:mt-8 mb-6 mx-2 lg:mx-auto lg:max-w-7xl bg-white rounded-3xl shadow-lg px-4 lg:px-8 py-4 lg:py-8'>
       <div className='flex flex-col lg:flex-row'>
@@ -458,7 +496,11 @@ const CappedStakingPeriod = () => {
                 ) : (
                   ''
                 )}
-                {isLMPEnded && startTimeData ? <span>LMP Ended</span> : ''}
+                {(isLMPEnded || allNXDMinted) && startTimeData ? (
+                  <span>LMP Ended</span>
+                ) : (
+                  ''
+                )}
                 {!startTimeData ? <span>Not Started</span> : ''}
               </p>
             </div>
@@ -473,7 +515,8 @@ const CappedStakingPeriod = () => {
                 Total NXD Claimed (inc. NXD Bonus)
               </p>
               <p className='ml-auto font-bold'>
-                {formattedNum(nxdTotalSupplyUiAmount?.toString()) || 0}
+                {formattedNum(nxdTotalClaimed?.toString()) || 0} /{' '}
+                {NXD_MAX_REWARDS_SUPPLY}
               </p>
             </div>
             <div className='flex mb-4'>
@@ -482,7 +525,11 @@ const CappedStakingPeriod = () => {
                 {currentMintRatio > 0 && !isLMPEnded
                   ? `1:${currentMintRatio}`
                   : ''}
-                {isLMPEnded && startTimeData ? <span>LMP Ended</span> : ''}
+                {(isLMPEnded || allNXDMinted) && startTimeData ? (
+                  <span>LMP Ended</span>
+                ) : (
+                  ''
+                )}
                 {!startTimeData ? <span>Not Started</span> : ''}
               </p>
             </div>
@@ -602,10 +649,7 @@ const CappedStakingPeriod = () => {
                     {/* End of the CSP Bonus */}
                     <span className='rounded-full bg-green-500 text-white px-2 py-0.5 ml-2'>
                       {'+ '}
-                      {formattedNum(
-                        Number(uiReferredBonusReceived) +
-                          Number(uiReferrerBonusReceived)
-                      )}
+                      {formattedNum(uiUserTotalBonus)}
                       {' NXD'}
                     </span>
                   </div>
