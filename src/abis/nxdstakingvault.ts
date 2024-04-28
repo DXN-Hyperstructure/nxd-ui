@@ -1,0 +1,400 @@
+export const NXD_STAKING_VAULT_ABI = [
+  {
+    'type': 'constructor',
+    'inputs': [
+      { 'name': '_nxd', 'type': 'address', 'internalType': 'contract IERC20' },
+    ],
+    'stateMutability': 'nonpayable',
+  },
+  { 'type': 'receive', 'stateMutability': 'payable' },
+  {
+    'type': 'function',
+    'name': 'WITHDRAWAL_COOLDOWN',
+    'inputs': [],
+    'outputs': [{ 'name': '', 'type': 'uint256', 'internalType': 'uint256' }],
+    'stateMutability': 'view',
+  },
+  {
+    'type': 'function',
+    'name': 'addPendingRewards',
+    'inputs': [],
+    'outputs': [],
+    'stateMutability': 'nonpayable',
+  },
+  {
+    'type': 'function',
+    'name': 'deposit',
+    'inputs': [
+      { 'name': '_pid', 'type': 'uint256', 'internalType': 'uint256' },
+      { 'name': '_amount', 'type': 'uint256', 'internalType': 'uint256' },
+    ],
+    'outputs': [],
+    'stateMutability': 'nonpayable',
+  },
+  {
+    'type': 'function',
+    'name': 'depositFor',
+    'inputs': [
+      { 'name': '_depositFor', 'type': 'address', 'internalType': 'address' },
+      { 'name': '_pid', 'type': 'uint256', 'internalType': 'uint256' },
+      { 'name': '_amount', 'type': 'uint256', 'internalType': 'uint256' },
+    ],
+    'outputs': [],
+    'stateMutability': 'nonpayable',
+  },
+  {
+    'type': 'function',
+    'name': 'emergencyWithdraw',
+    'inputs': [
+      { 'name': '_pid', 'type': 'uint256', 'internalType': 'uint256' },
+    ],
+    'outputs': [],
+    'stateMutability': 'nonpayable',
+  },
+  {
+    'type': 'function',
+    'name': 'locked',
+    'inputs': [],
+    'outputs': [{ 'name': '', 'type': 'bool', 'internalType': 'bool' }],
+    'stateMutability': 'view',
+  },
+  {
+    'type': 'function',
+    'name': 'massUpdatePools',
+    'inputs': [],
+    'outputs': [],
+    'stateMutability': 'nonpayable',
+  },
+  {
+    'type': 'function',
+    'name': 'numPools',
+    'inputs': [],
+    'outputs': [{ 'name': '', 'type': 'uint256', 'internalType': 'uint256' }],
+    'stateMutability': 'view',
+  },
+  {
+    'type': 'function',
+    'name': 'nxd',
+    'inputs': [],
+    'outputs': [
+      { 'name': '', 'type': 'address', 'internalType': 'contract IERC20' },
+    ],
+    'stateMutability': 'view',
+  },
+  {
+    'type': 'function',
+    'name': 'nxdPenaltyBurned',
+    'inputs': [],
+    'outputs': [{ 'name': '', 'type': 'uint256', 'internalType': 'uint256' }],
+    'stateMutability': 'view',
+  },
+  {
+    'type': 'function',
+    'name': 'nxdProtocol',
+    'inputs': [],
+    'outputs': [
+      {
+        'name': '',
+        'type': 'address',
+        'internalType': 'contract INXDProtocol',
+      },
+    ],
+    'stateMutability': 'view',
+  },
+  {
+    'type': 'function',
+    'name': 'ourETHBalance',
+    'inputs': [],
+    'outputs': [{ 'name': '', 'type': 'uint256', 'internalType': 'uint256' }],
+    'stateMutability': 'view',
+  },
+  {
+    'type': 'function',
+    'name': 'pendingETH',
+    'inputs': [
+      { 'name': '_pid', 'type': 'uint256', 'internalType': 'uint256' },
+      { 'name': '_user', 'type': 'address', 'internalType': 'address' },
+    ],
+    'outputs': [{ 'name': '', 'type': 'uint256', 'internalType': 'uint256' }],
+    'stateMutability': 'view',
+  },
+  {
+    'type': 'function',
+    'name': 'pendingRewards',
+    'inputs': [],
+    'outputs': [{ 'name': '', 'type': 'uint256', 'internalType': 'uint256' }],
+    'stateMutability': 'view',
+  },
+  {
+    'type': 'function',
+    'name': 'poolInfo',
+    'inputs': [{ 'name': '', 'type': 'uint256', 'internalType': 'uint256' }],
+    'outputs': [
+      { 'name': 'token', 'type': 'address', 'internalType': 'contract IERC20' },
+      { 'name': 'allocPoint', 'type': 'uint256', 'internalType': 'uint256' },
+      {
+        'name': 'accEthPerShare',
+        'type': 'uint256',
+        'internalType': 'uint256',
+      },
+      { 'name': 'withdrawable', 'type': 'bool', 'internalType': 'bool' },
+    ],
+    'stateMutability': 'view',
+  },
+  {
+    'type': 'function',
+    'name': 'totalAllocPoint',
+    'inputs': [],
+    'outputs': [{ 'name': '', 'type': 'uint256', 'internalType': 'uint256' }],
+    'stateMutability': 'view',
+  },
+  {
+    'type': 'function',
+    'name': 'totalStaked',
+    'inputs': [],
+    'outputs': [{ 'name': '', 'type': 'uint256', 'internalType': 'uint256' }],
+    'stateMutability': 'view',
+  },
+  {
+    'type': 'function',
+    'name': 'userInfo',
+    'inputs': [
+      { 'name': '', 'type': 'uint256', 'internalType': 'uint256' },
+      { 'name': '', 'type': 'address', 'internalType': 'address' },
+    ],
+    'outputs': [
+      { 'name': 'amount', 'type': 'uint256', 'internalType': 'uint256' },
+      { 'name': 'rewardDebt', 'type': 'uint256', 'internalType': 'uint256' },
+    ],
+    'stateMutability': 'view',
+  },
+  {
+    'type': 'function',
+    'name': 'withdraw',
+    'inputs': [
+      { 'name': '_pid', 'type': 'uint256', 'internalType': 'uint256' },
+      { 'name': '_amount', 'type': 'uint256', 'internalType': 'uint256' },
+      { 'name': 'acceptsPenalty', 'type': 'bool', 'internalType': 'bool' },
+    ],
+    'outputs': [],
+    'stateMutability': 'nonpayable',
+  },
+  {
+    'type': 'function',
+    'name': 'withdrawCooldown',
+    'inputs': [
+      { 'name': '_pid', 'type': 'uint256', 'internalType': 'uint256' },
+    ],
+    'outputs': [],
+    'stateMutability': 'nonpayable',
+  },
+  {
+    'type': 'function',
+    'name': 'withdrawalRequests',
+    'inputs': [
+      { 'name': '', 'type': 'uint256', 'internalType': 'uint256' },
+      { 'name': '', 'type': 'address', 'internalType': 'address' },
+    ],
+    'outputs': [
+      { 'name': 'amount', 'type': 'uint256', 'internalType': 'uint256' },
+      {
+        'name': 'canWithdrawAfterTimestamp',
+        'type': 'uint256',
+        'internalType': 'uint256',
+      },
+    ],
+    'stateMutability': 'view',
+  },
+  {
+    'type': 'event',
+    'name': 'Add',
+    'inputs': [
+      {
+        'name': 'token',
+        'type': 'address',
+        'indexed': true,
+        'internalType': 'address',
+      },
+      {
+        'name': 'pid',
+        'type': 'uint256',
+        'indexed': true,
+        'internalType': 'uint256',
+      },
+      {
+        'name': 'allocPoint',
+        'type': 'uint256',
+        'indexed': false,
+        'internalType': 'uint256',
+      },
+      {
+        'name': 'withdrawable',
+        'type': 'bool',
+        'indexed': false,
+        'internalType': 'bool',
+      },
+    ],
+    'anonymous': false,
+  },
+  {
+    'type': 'event',
+    'name': 'Approval',
+    'inputs': [
+      {
+        'name': 'owner',
+        'type': 'address',
+        'indexed': true,
+        'internalType': 'address',
+      },
+      {
+        'name': 'spender',
+        'type': 'address',
+        'indexed': true,
+        'internalType': 'address',
+      },
+      {
+        'name': '_pid',
+        'type': 'uint256',
+        'indexed': false,
+        'internalType': 'uint256',
+      },
+      {
+        'name': 'value',
+        'type': 'uint256',
+        'indexed': false,
+        'internalType': 'uint256',
+      },
+    ],
+    'anonymous': false,
+  },
+  {
+    'type': 'event',
+    'name': 'Deposit',
+    'inputs': [
+      {
+        'name': 'user',
+        'type': 'address',
+        'indexed': true,
+        'internalType': 'address',
+      },
+      {
+        'name': 'pid',
+        'type': 'uint256',
+        'indexed': true,
+        'internalType': 'uint256',
+      },
+      {
+        'name': 'amount',
+        'type': 'uint256',
+        'indexed': false,
+        'internalType': 'uint256',
+      },
+    ],
+    'anonymous': false,
+  },
+  {
+    'type': 'event',
+    'name': 'EmergencyWithdraw',
+    'inputs': [
+      {
+        'name': 'user',
+        'type': 'address',
+        'indexed': true,
+        'internalType': 'address',
+      },
+      {
+        'name': 'pid',
+        'type': 'uint256',
+        'indexed': true,
+        'internalType': 'uint256',
+      },
+      {
+        'name': 'amount',
+        'type': 'uint256',
+        'indexed': false,
+        'internalType': 'uint256',
+      },
+    ],
+    'anonymous': false,
+  },
+  {
+    'type': 'event',
+    'name': 'Withdraw',
+    'inputs': [
+      {
+        'name': 'user',
+        'type': 'address',
+        'indexed': true,
+        'internalType': 'address',
+      },
+      {
+        'name': 'pid',
+        'type': 'uint256',
+        'indexed': true,
+        'internalType': 'uint256',
+      },
+      {
+        'name': 'amount',
+        'type': 'uint256',
+        'indexed': false,
+        'internalType': 'uint256',
+      },
+    ],
+    'anonymous': false,
+  },
+  {
+    'type': 'event',
+    'name': 'WithdrawRequested',
+    'inputs': [
+      {
+        'name': 'user',
+        'type': 'address',
+        'indexed': true,
+        'internalType': 'address',
+      },
+      {
+        'name': 'amount',
+        'type': 'uint256',
+        'indexed': false,
+        'internalType': 'uint256',
+      },
+      {
+        'name': 'canWithdrawAfterTimestamp',
+        'type': 'uint256',
+        'indexed': false,
+        'internalType': 'uint256',
+      },
+    ],
+    'anonymous': false,
+  },
+  {
+    'type': 'error',
+    'name': 'AddressEmptyCode',
+    'inputs': [
+      { 'name': 'target', 'type': 'address', 'internalType': 'address' },
+    ],
+  },
+  {
+    'type': 'error',
+    'name': 'AddressInsufficientBalance',
+    'inputs': [
+      { 'name': 'account', 'type': 'address', 'internalType': 'address' },
+    ],
+  },
+  { 'type': 'error', 'name': 'Cooldown', 'inputs': [] },
+  { 'type': 'error', 'name': 'FailedInnerCall', 'inputs': [] },
+  { 'type': 'error', 'name': 'InvalidAmount', 'inputs': [] },
+  { 'type': 'error', 'name': 'Locked', 'inputs': [] },
+  { 'type': 'error', 'name': 'NoRequest', 'inputs': [] },
+  { 'type': 'error', 'name': 'PoolAlreadyAdded', 'inputs': [] },
+  {
+    'type': 'error',
+    'name': 'SafeERC20FailedOperation',
+    'inputs': [
+      { 'name': 'token', 'type': 'address', 'internalType': 'address' },
+    ],
+  },
+  { 'type': 'error', 'name': 'SendETHFail', 'inputs': [] },
+  { 'type': 'error', 'name': 'Underflow', 'inputs': [] },
+  { 'type': 'error', 'name': 'WithdrawDisabled', 'inputs': [] },
+] as const;
