@@ -343,13 +343,6 @@ const CappedStakingPeriod = () => {
     ? Number(divideByDecimals(nxdTotalSupplyData.toString(), NXD_DECIMALS))
     : '0';
 
-  const nxdTotalClaimed = Number(nxdTotalSupplyUiAmount) - 5000;
-
-  const totalNxdClaimedPercentage = (
-    (Number(nxdTotalClaimed) / NXD_MAX_REWARDS_SUPPLY) *
-    100
-  ).toFixed(5);
-
   const {
     data: userNXDBalanceData,
     isLoading: isUserNXDBalanceLoading,
@@ -470,6 +463,16 @@ const CappedStakingPeriod = () => {
     Number(uiTotalUnclaimedReferralRewards);
 
   const allNXDMinted = remainingSupplyMintable == 0;
+
+  const nxdTotalClaimed: number =
+    Number(nxdTotalSupplyUiAmount) -
+    5000 +
+    Number(uiTotalUnclaimedReferralRewards);
+
+  const totalNxdClaimedPercentage = (
+    (Number(nxdTotalClaimed) / NXD_MAX_REWARDS_SUPPLY) *
+    100
+  ).toFixed(5);
 
   return (
     <div className='mt-4 lg:mt-8 mb-6 mx-2 lg:mx-auto lg:max-w-7xl bg-white rounded-3xl shadow-lg px-4 lg:px-8 py-4 lg:py-8'>
