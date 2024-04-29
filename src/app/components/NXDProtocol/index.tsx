@@ -189,11 +189,11 @@ const Protocol = () => {
     totalDXnCompoundedDSVPS * dxnPriceInUSD
   );
 
-  const dxnAsPercentageOfTVL =
-    (totalDXnCompoundedDSVPS / Number(uiTotalSupply)) * 100;
+  // const dxnAsPercentageOfTVL =
+  //   (totalDXnCompoundedDSVPS / Number(uiTotalSupply)) * 100;
 
   const totalDXNAsPercentageOfLMP =
-    ((uiTotalDXNStaked + uiTotalDXNStakedFromProfitShare) /
+    ((Number(uiTotalDXNStaked) + Number(uiTotalDXNStakedFromProfitShare)) /
       Number(uiTotalDXNDepositedLMP)) *
     100;
 
