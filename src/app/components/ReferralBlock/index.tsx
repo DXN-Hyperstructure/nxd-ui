@@ -186,7 +186,7 @@ const ReferralBlock = () => {
                   !isLoading &&
                   (data?.toString() == '0' || data == undefined) &&
                   'Create Your Referral Link'}
-                {!connectedUserAddress && 'Connect Wallet'}
+                {!connectedUserAddress && 'Wallet Not Connected'}
               </button>
             )}
           </div>

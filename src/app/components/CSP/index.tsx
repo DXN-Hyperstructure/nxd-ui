@@ -482,11 +482,11 @@ const CappedStakingPeriod = () => {
             <h2 className='text-1xl font-bold text-gray-800 mb-4'>
               Mint NXD token
             </h2>
-            <div className='flex flex-col lg:flex-row mb-4'>
+            <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
               <p className='flex-grow text-[#90A6B3] mb-2 lg:mb-0 lg:mr-10'>
                 Time Remaining Mint Phase (DD/HH/MM/SS)
               </p>
-              <p className='ml-auto font-bold whitespace-nowrap'>
+              <p className='lg:ml-auto font-bold whitespace-nowrap lg:text-right'>
                 {mintStarted && !isLMPEnded ? (
                   <Countdown
                     targetDate={
@@ -504,24 +504,26 @@ const CappedStakingPeriod = () => {
                 {!startTimeData ? <span></span> : ''}
               </p>
             </div>
-            <div className='flex mb-4'>
+            <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
               <p className='flex-grow text-[#90A6B3]'>
                 Total NXD Claimed % (inc. NXD Bonus)
               </p>
-              <p className='ml-auto font-bold'>{totalNxdClaimedPercentage}%</p>
+              <p className='lg:ml-auto font-bold lg:text-right'>
+                {totalNxdClaimedPercentage}%
+              </p>
             </div>
-            <div className='flex mb-4'>
+            <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
               <p className='flex-grow text-[#90A6B3]'>
                 Total NXD Claimed (inc. NXD Bonus)
               </p>
-              <p className='ml-auto font-bold'>
+              <p className='lg:ml-auto font-bold lg:text-right'>
                 {formattedNum(nxdTotalClaimed?.toString()) || 0} /{' '}
                 {formattedNum(NXD_MAX_REWARDS_SUPPLY)}
               </p>
             </div>
-            <div className='flex mb-4'>
+            <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
               <p className='flex-grow text-[#90A6B3]'>Current Mint Ratio</p>
-              <p className='ml-auto font-bold'>
+              <p className='lg:ml-auto font-bold lg:text-right'>
                 {currentMintRatio > 0 && !isLMPEnded
                   ? `1:${currentMintRatio}`
                   : ''}
@@ -559,8 +561,8 @@ const CappedStakingPeriod = () => {
           </div>
         </div>
 
-        <div className='flex-1 pl-4'>
-          <div className='p-8'>
+        <div className='flex-1 lg:pl-4'>
+          <div className='p-4 lg:p-8'>
             <div className='flex flex-col lg:flex-row mb-4'>
               <div className='w-full lg:w-3/4 lg:mr-8 relative mb-4 lg:mb-0'>
                 <label

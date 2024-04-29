@@ -92,7 +92,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className='flex flex-col md:flex-row items-center gap-8 md:gap-20 md:mx-auto'>
+        <div className='flex flex-col md:flex-row items-center gap-8 md:gap-20 md:mx-auto break-all'>
           <div className='text-[#90A6B3] gap-4'>
             <div className='text-[#90A6B3] mb-4'>
               <div className='text-[#90A6B3] mb-4 flex flex-col md:flex-row items-center'>

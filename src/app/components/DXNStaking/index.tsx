@@ -193,43 +193,45 @@ const DXNStaking = () => {
           <h2 className='text-1xl font-bold text-gray-800 mb-3'>
             DXN Holdings TVL Overview
           </h2>
-          <div className='flex mb-2'>
+          <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-2'>
             <p className='flex-grow text-[#90A6B3]'>
               Total DXN Staked Limited Mint Phase
             </p>
-            <p className='ml-auto font-bold'>
+            <p className='lg:ml-auto font-bold lg:text-right'>
               {formattedNum(uiTotalDXNDepositedLMP)} DXN (
               {formattedNum(Number(uiTotalDXNDepositedLMP) * dxnPriceInUSD)}{' '}
               USD)
             </p>
           </div>
-          <div className='flex mb-2'>
+          <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-2'>
             <p className='flex-grow text-[#90A6B3]'>
               Total DXN Staked Compounded
             </p>
-            <p className='ml-auto font-bold'>
+            <p className='lg:ml-auto font-bold lg:text-right'>
               {formattedNum(uiTotalDXNStakedCompounded)} DXN (
               {uiTotalDXNStakedCompoundedUSD} USD)
             </p>
           </div>
-          <div className='flex mb-5'>
+          <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-5'>
             <p className='flex-grow text-[#90A6B3]'>Compounded as a % of LMP</p>
-            <p className='ml-auto font-bold'>{compoundedAsPercentageOfCSP}%</p>
+            <p className='lg:ml-auto font-bold lg:text-right'>
+              {compoundedAsPercentageOfCSP}%
+            </p>
           </div>
 
           <hr className='border border-[#F8F9F9] mb-5' />
 
-          <div className='flex mb-2'>
+          <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-2'>
             <p className='flex-grow text-[#90A6B3]'>Total DXN Staked</p>
-            <p className='ml-auto font-bold'>
+            <p className='lg:ml-auto font-bold lg:text-right'>
               {formattedNum(uiTotalDXNStaked)} DXN ({uiTotalDXNStakedUSD} USD)
             </p>
           </div>
-          <div className='flex mb-4'>
+          <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
             <p className='flex-grow text-[#90A6B3]'>
               As a % of Total DXN Supply
             </p>
-            <p className='ml-auto font-bold'>
+            <p className='lg:ml-auto font-bold lg:text-right'>
               {formattedNum(
                 (Number(uiTotalDXNStaked) / Number(uiTotalSupply)) * 100
               )}
@@ -239,10 +241,10 @@ const DXNStaking = () => {
         </div>
       </div>
 
-      <div className='flex-1 pl-4'>
-        <div className='p-8'>
+      <div className='flex-1 lg:pl-4'>
+        <div className='p-4 lg:p-8'>
           <div className='flex flex-col lg:flex-row mb-4'>
-            <div className='flex-1 mt-16 '>
+            <div className='flex-1 mt-16'>
               <h2 className='text-1xl font-bold text-gray-800 mb-3'>
                 ETH Distribution Strategy
               </h2>
@@ -250,30 +252,30 @@ const DXNStaking = () => {
                 Total ETH Distributed
               </h2>
 
-              <div className='flex mb-3'>
+              <div className='flex flex-col gap-1 lg:flex-row mb-3'>
                 <p className='flex-grow text-[#90A6B3]'>DXN Compounded</p>
-                <p className='ml-auto font-bold'>
+                <p className='lg:ml-auto font-bold lg:text-right'>
                   {formattedNum(uiTotalDXNStakedDistributionStrat)} DXN (
                   {uiTotalDXNStakedDistributionStratUSD} USD)
                 </p>
               </div>
-              <div className='flex mb-3'>
+              <div className='flex flex-col gap-1 lg:flex-row mb-3'>
                 <p className='flex-grow text-[#90A6B3]'>DXN Burned</p>
-                <p className='ml-auto font-bold'>
+                <p className='lg:ml-auto font-bold lg:text-right'>
                   {formattedNum(uiTotalDXNBurned)} DXN ({uiTotalDXNBurnedUSD}{' '}
                   USD)
                 </p>
               </div>
-              <div className='flex mb-3'>
+              <div className='flex flex-col gap-1 lg:flex-row mb-3'>
                 <p className='flex-grow text-[#90A6B3]'>NXD Burned</p>
-                <p className='ml-auto font-bold'>
+                <p className='lg:ml-auto font-bold lg:text-right'>
                   {formattedNum(uiTotalNXDBurned)} NXD ({uiTotalNXDBurnedUSD}{' '}
                   USD)
                 </p>
               </div>
-              <div className='flex mb-5'>
+              <div className='flex flex-col gap-1 lg:flex-row mb-5'>
                 <p className='flex-grow text-[#90A6B3]'>NXD Staking Vault</p>
-                <p className='ml-auto font-bold'>
+                <p className='lg:ml-auto font-bold lg:text-right'>
                   {formattedNum(uiEthToStakingVault)} ETH (
                   {formattedNum(Number(uiEthToStakingVaultUSD))} USD)
                 </p>
@@ -281,11 +283,11 @@ const DXNStaking = () => {
 
               <hr className='border border-[#F8F9F9] mb-5' />
 
-              <div className='flex mb-2'>
+              <div className='flex flex-col gap-1 lg:flex-row mb-2'>
                 <p className='flex-grow text-[#90A6B3]'>
                   ETH Currently Available for Distribution
                 </p>
-                <p className='ml-auto font-bold'>
+                <p className='lg:ml-auto font-bold lg:text-right'>
                   {formattedNum(uiOurClaimableFees)} ETH (
                   {uiOurClaimableFeesUSD} USD)
                 </p>

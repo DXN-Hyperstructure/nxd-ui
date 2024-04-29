@@ -171,6 +171,10 @@ const Protocol = () => {
     ? divideByDecimals(totalDXNDepositedLMPData.toString(), DXN_DECIMALS)
     : '0';
 
+  const uiTotalDXNDepositedLMPUSD = formattedNum(
+    Number(uiTotalDXNDepositedLMP) * dxnPriceInUSD
+  );
+
   const totalDXnCompoundedDSVNoPS =
     Number(uiTotalDXNStaked) + Number(uiTotalDXNDepositedLMP);
 
@@ -188,6 +192,11 @@ const Protocol = () => {
   const dxnAsPercentageOfTVL =
     (totalDXnCompoundedDSVPS / Number(uiTotalSupply)) * 100;
 
+  const totalDXNAsPercentageOfLMP =
+    ((uiTotalDXNStaked + uiTotalDXNStakedFromProfitShare) /
+      Number(uiTotalDXNDepositedLMP)) *
+    100;
+
   return (
     <div className='mt-4 lg:mt-8 mb-6 mx-2 lg:mx-auto lg:max-w-7xl bg-white rounded-3xl shadow-lg px-4 lg:px-8 py-4 lg:py-8 flex flex-col lg:flex-row'>
       <div className='flex-1 pr-2 lg:pr-4'>
@@ -196,72 +205,90 @@ const Protocol = () => {
             NXD Protocol Analytics
           </h2>
           <h2 className='text-1xl font-bold text-gray-800 mb-3'>
-            DXN Re-Staked and Compounded
+            DXN Total Value Locked in DSV
           </h2>
-          <div className='flex mb-2'>
-            <p className='flex-grow text-[#90A6B3] '>
-              Total DXN Compounded in the DXN Staking Vault
-            </p>
-            <p className='ml-auto font-bold text-right '>
-              {formattedNum(totalDXnCompoundedDSVNoPS)} DXN (
-              {totalDXnCompoundedDSVNoPSUSD} USD)
+          <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-2'>
+            <p className='flex-grow text-[#90A6B3] '>Total DXN Locked LMP</p>
+            <p className='lg:ml-auto font-bold lg:text-right '>
+              {formattedNum(uiTotalDXNDepositedLMP)} DXN (
+              {uiTotalDXNDepositedLMPUSD} USD)
             </p>
           </div>
-          <div className='flex mb-2'>
-            <p className='flex-grow text-[#90A6B3]'>
-              Total DXN Compounded from FoT 1.5%
+          <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-2'>
+            <p className='flex-grow text-[#90A6B3] '>
+              Total DXN Compounded DSV
             </p>
-            <p className='ml-auto font-bold'>
+            <p className='lg:ml-auto font-bold lg:text-right '>
+              {formattedNum(uiTotalDXNStaked)} DXN ({uiTotalDXNStakedUSD} USD)
+            </p>
+          </div>
+          <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-2'>
+            <p className='flex-grow text-[#90A6B3]'>Total DXN Compounded FoT</p>
+            <p className='lg:ml-auto font-bold lg:text-right'>
               {formattedNum(uiTotalDXNStakedFromProfitShare)} DXN (
               {formattedNum(uiTotalDXNStakedFromProfitShareUSD)} USD)
             </p>
           </div>
-          <div className='flex mb-5'>
-            <p className='flex-grow text-[#90A6B3]'>Total DXN Compounded</p>
-            <p className='ml-auto font-bold'>
-              {formattedNum(totalDXnCompoundedDSVPS)} DXN (
-              {totalDXnCompoundedDSVPSUSD} USD)
+
+          <div className='flex mt-10 flex-col gap-1 lg:gap-0 lg:flex-row mb-5'>
+            <p className='flex-grow text-[#90A6B3]'>
+              Total DXN Compounded as a % of LMP
+            </p>
+            <p className='lg:ml-auto font-bold lg:text-right'>
+              {formattedNum(totalDXNAsPercentageOfLMP)}%
             </p>
           </div>
-          <div className='flex mb-5'>
+          {/* <div className='flex mt-10 flex-col gap-1 lg:gap-0 lg:flex-row mb-5'>
             <p className='flex-grow text-[#90A6B3]'>
-              Total TVL DXN as a % of Total Supply DXN
+              Total DXN as a % of Total Supply DXN
             </p>
-            <p className='ml-auto font-bold'>
+            <p className='lg:ml-auto font-bold lg:text-right'>
               {formattedNum(dxnAsPercentageOfTVL)}%
+            </p>
+          </div> */}
+          {/* <hr className='border border-[#F8F9F9] mb-5' /> */}
+
+          <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-5'>
+            <p className='flex-grow text-[#90A6B3]'>
+              Total DXN Locked DXN Staking Vault
+            </p>
+            <p className='lg:ml-auto font-bold lg:text-right'>
+              {formattedNum(totalDXnCompoundedDSVPS)} DXN (
+              {totalDXnCompoundedDSVPSUSD} USD)
             </p>
           </div>
 
           <hr className='border border-[#F8F9F9] mb-5' />
 
           <h2 className='text-1xl font-bold text-gray-800 mb-3'>
-            DXN Deflationary Statistics
+            DXN Total Supply Reduction by DSV
           </h2>
 
-          <div className='flex mb-2'>
+          <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-2'>
             <p className='flex-grow text-[#90A6B3]'>
               Total DXN Locked DXN Staking Vault (TVL)
             </p>
-            <p className='ml-auto font-bold'>
-              {formattedNum(uiTotalDXNStaked)} DXN ({uiTotalDXNStakedUSD} USD)
+            <p className='lg:ml-auto font-bold lg:text-right'>
+              {formattedNum(totalDXnCompoundedDSVPS)} DXN (
+              {totalDXnCompoundedDSVPSUSD} USD)
             </p>
           </div>
-          <div className='flex mb-4'>
+          <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
             <p className='flex-grow text-[#90A6B3]'>
               Total DXN Burned DXN Staking Vault
             </p>
-            <p className='ml-auto font-bold'>
+            <p className='lg:ml-auto font-bold lg:text-right'>
               {formattedNum(uiTotalDXNBurned)} DXN ({uiTotalDXNBurnedUSD} USD)
             </p>
           </div>
-          <div className='flex mb-4'>
-            <p className='flex-grow text-[#90A6B3]'>
-              DXN Burn as a % of TVL DXN Staking Vault
-            </p>
-            <p className='ml-auto font-bold'>
-              {Number(uiTotalDXNStaked) > 0
+          <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
+            <p className='flex-grow text-[#90A6B3]'>DXN Burn as % of DSV TVL</p>
+            <p className='lg:ml-auto font-bold lg:text-right'>
+              {Number(totalDXnCompoundedDSVPS) > 0
                 ? formattedNum(
-                    (Number(uiTotalDXNBurned) / Number(uiTotalDXNStaked)) * 100
+                    (Number(uiTotalDXNBurned) /
+                      Number(totalDXnCompoundedDSVPS)) *
+                      100
                   )
                 : '0'}
               %
@@ -270,7 +297,7 @@ const Protocol = () => {
 
           <hr className='border border-[#F8F9F9] mb-5' />
 
-          <div className='flex mb-4'>
+          <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
             <div className='flex-grow'>
               <p className='text-[#90A6B3] '>
                 Total Reduction of Circulating DXN Supply
@@ -279,9 +306,9 @@ const Protocol = () => {
                 (Total Locked + Total Burned / Circulating DXN)
               </p>
             </div>
-            <p className='ml-auto font-bold'>
+            <p className='lg:ml-auto font-bold lg:text-right'>
               {formattedNum(
-                ((Number(uiTotalDXNStaked) + Number(uiTotalDXNBurned)) /
+                ((Number(totalDXnCompoundedDSVPS) + Number(uiTotalDXNBurned)) /
                   Number(uiTotalSupply)) *
                   100
               )}
@@ -291,36 +318,36 @@ const Protocol = () => {
         </div>
       </div>
 
-      <div className='flex-1 pl-4'>
-        <div className='p-8'>
+      <div className='flex-1 '>
+        <div className='p-4 lg:p-8'>
           <div className='flex flex-col lg:flex-row mb-4'>
             <div className='flex-1 mt-16 '>
               <h2 className='text-1xl font-bold text-gray-800 mb-3'>
                 NXD Deflationary Statistics
               </h2>
-              <div className='flex mb-3'>
+              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-3'>
                 <p className='flex-grow text-[#90A6B3]'>
                   Total NXD Burn DXN Staking Vault
                 </p>
-                <p className='ml-auto font-bold'>
+                <p className='lg:ml-auto font-bold lg:text-right'>
                   {formattedNum(uiTotalNXDBurned)} NXD ({uiTotalNXDBurnedUSD}{' '}
                   USD)
                 </p>
               </div>
-              <div className='flex mb-3'>
+              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-3'>
                 <p className='flex-grow text-[#90A6B3]'>
                   Total NXD Burn FoT 2%
                 </p>
-                <p className='ml-auto font-bold'>
+                <p className='lg:ml-auto font-bold lg:text-right'>
                   {formattedNum(uiTotalNXDBurnedFeeOnTransfer)} NXD (
                   {uiTotalNXDBurnedFeeOnTransferUSD} USD)
                 </p>
               </div>
-              <div className='flex mb-5'>
+              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-5'>
                 <p className='flex-grow text-[#90A6B3]'>
                   Total NXD Burn Unstaking Penalty
                 </p>
-                <p className='ml-auto font-bold'>
+                <p className='lg:ml-auto font-bold lg:text-right'>
                   {' '}
                   {formattedNum(uiNXDPenaltyBurned)} NXD (
                   {formattedNum(uiNXDPenaltyBurnedUSD)} USD)
@@ -329,27 +356,27 @@ const Protocol = () => {
 
               <hr className='border border-[#F8F9F9] mb-5' />
 
-              <div className='flex mb-5'>
+              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-5'>
                 <p className='flex-grow text-[#90A6B3]'>Total NXD Burn</p>
-                <p className='ml-auto font-bold'>
+                <p className='lg:ml-auto font-bold lg:text-right'>
                   {formattedNum(totalNXDBurn)} NXD ({totalNXDBurnUSD} USD)
                 </p>
               </div>
 
-              <div className='flex mb-2'>
+              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-2'>
                 <p className='flex-grow text-[#90A6B3]'>
                   Total % NXD Burn of Total NXD Supply
                 </p>
-                <p className='ml-auto font-bold'>
+                <p className='lg:ml-auto font-bold lg:text-right'>
                   {formattedNum(totalNXDBurnPerTotalSupply)}%
                 </p>
               </div>
 
-              <div className='flex mb-2'>
+              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-2'>
                 <p className='flex-grow text-[#90A6B3]'>
                   Price Floor NXD in DXN
                 </p>
-                <p className='ml-auto font-bold'>
+                <p className='lg:ml-auto font-bold lg:text-right'>
                   {nxdFloorPriceInDXN.toFixed(8).toLocaleString()} DXN
                 </p>
               </div>

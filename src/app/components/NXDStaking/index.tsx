@@ -371,18 +371,18 @@ const NXDStaking = () => {
           <h2 className='text-1xl font-bold text-gray-800 mb-4'>
             Stake NXD token to earn ETH from DXN Daily Auctions
           </h2>
-          <div className='flex mb-4'>
+          <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
             <p className='flex-grow text-[#90A6B3]'>Total NXD Staked</p>
-            <p className='ml-auto font-bold'>
+            <p className='lg:ml-auto font-bold lg:text-right'>
               {formattedNum(uiTotalStakedData)} NXD (
               {formattedNum(uiTotalStakedDataUSD)} USD)
             </p>
           </div>
-          <div className='flex mb-4'>
+          <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
             <p className='flex-grow text-[#90A6B3]'>
               Total NXD Staked of Total NXD Supply:
             </p>
-            <p className='ml-auto font-bold'>
+            <p className='lg:sml-auto font-bold lg:text-right'>
               {Number(nxdTotalSupplyUiAmount) > 0
                 ? (
                     (Number(uiTotalStakedData) /
@@ -398,9 +398,9 @@ const NXDStaking = () => {
           <h2 className='text-3xl font-bold text-gray-800 mb-6 lg:mb-4'>
             Stake NXD
           </h2>
-          <div className='flex mb-4'>
+          <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
             <p className='flex-grow text-[#90A6B3]'>NXD in Wallet</p>
-            <p className='ml-auto font-bold'>
+            <p className='lg:ml-auto font-bold lg:text-right'>
               {formattedNum(userNXDBalanceData)} NXD (
               {formattedNum(
                 nxdPriceInUSD * Number(userNXDBalanceData.toString())
@@ -451,16 +451,16 @@ const NXDStaking = () => {
             {needsAllowance ? 'Approve' : 'STAKE NXD'}
           </button>
 
-          <div className='flex mb-4 mt-4'>
+          <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4 mt-4'>
             <p className='flex-grow font-bold text-black'>Your Staked NXD</p>
-            <p className='ml-auto font-bold text-[#58BD7D]'>
+            <p className='lg:ml-auto font-bold text-[#58BD7D] lg:text-right'>
               {formattedNum(uiUserStakedNXD)} NXD (
               {formattedNum(Number(uiUserStakedNXD) * nxdPriceInUSD)} USD)
             </p>
           </div>
-          <div className='flex mb-4'>
+          <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
             <p className='flex-grow text-black font-bold'>Claimable ETH</p>
-            <p className='ml-auto font-bold text-[#58BD7D]'>
+            <p className='lg:ml-auto font-bold text-[#58BD7D] lg:text-right'>
               {formattedNum(uiUserPendingRewards)} ETH
             </p>
           </div>
@@ -475,8 +475,8 @@ const NXDStaking = () => {
         </div>
       </div>
 
-      <div className='flex-1 pl-4'>
-        <div className='p-8'>
+      <div className='flex-1 lg:pl-4'>
+        <div className='p-4 lg:p-8'>
           <div className='flex flex-col lg:flex-row mb-4'>
             <div className='flex-1 mt-14'>
               <h2 className='text-1xl font-bold text-gray-800 mb-4 mt-4'>
@@ -504,7 +504,7 @@ const NXDStaking = () => {
                     </div>
                     <div className='flex mb-4'>
                       <p className='flex-grow text-[#90A6B3]'>Amount</p>
-                      <p className='ml-auto font-bold'>
+                      <p className='ml-auto font-bold text-right'>
                         {userWithdrawalRequest.amount} NXD
                       </p>
                     </div>
@@ -583,11 +583,11 @@ const NXDStaking = () => {
                 Unstaking triggers a 24h Waiting Phase
               </h2>
 
-              <div className='flex mb-4'>
+              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
                 <p className='flex-grow text-[#90A6B3]'>
                   NXD burned from early withdrawal penalty
                 </p>
-                <p className='ml-auto font-bold'>
+                <p className='lg:ml-auto font-bold lg:text-right'>
                   {formattedNum(uiNXDPenaltyBurned)} NXD (
                   {formattedNum(uiNXDPenaltyBurnedUSD)} USD)
                 </p>

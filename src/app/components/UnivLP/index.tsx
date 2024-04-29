@@ -147,59 +147,59 @@ const Univ = () => {
           </p>
         </div>
       </div>
-      <div className='flex-1 pl-4'>
-        <div className='p-8'>
+      <div className='flex-1 lg:pl-4'>
+        <div className='p-4 lg:p-8'>
           <div className='flex flex-col lg:flex-row mb-4'>
             <div className='flex-1 '>
-              <div className='flex mb-4'>
+              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
                 <p className='flex-grow text-[#90A6B3]'>Total TVL LP</p>
-                <p className='ml-auto font-bold'>
+                <p className=' lg:ml-auto font-bold lg:text-right'>
                   {formattedNum(nxdReserves)} NXD / {formattedNum(dxnReserves)}{' '}
                   DXN /{' '}
                   {formattedNum(dxnPriceInUSD * parseInt(dxnReserves) * 2)} USD
                 </p>
               </div>
-              <div className='flex mb-4'>
+              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
                 <p className='flex-grow text-[#90A6B3]'>Price Floor NXD/DXN</p>
-                <p className='ml-auto font-bold'>
+                <p className='lg:ml-auto font-bold lg:text-right'>
                   1 NXD = {nxdFloorPriceInDXN.toFixed(8).toLocaleString()} DXN (
                   {formattedNum(nxdFloorPriceInDXN * dxnPriceInUSD)} USD)
                 </p>
               </div>
-              <div className='flex mb-4'>
+              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
                 <p className='flex-grow text-[#90A6B3]'>
                   NXD Burned from FoT 2%
                 </p>
-                <p className='ml-auto font-bold'>
+                <p className='lg:ml-auto font-bold lg:text-right'>
                   {formattedNum(uiTotalNXDBurned)} NXD (
                   {formattedNum(Number(uiTotalNXDBurned) * nxdPriceInUSD)} USD)
                 </p>
               </div>
-              <div className='flex mb-4'>
+              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
                 <p className='flex-grow text-[#90A6B3]'>
                   NXD added to LP from FoT 0.5%
                 </p>
-                <p className='ml-auto font-bold'>
+                <p className='lg:ml-auto font-bold lg:text-right'>
                   {formattedNum(uiTotalNXDAddedToLP)} NXD (
                   {formattedNum(Number(uiTotalNXDAddedToLP) * nxdPriceInUSD)}{' '}
                   USD)
                 </p>
               </div>
-              <div className='flex mb-4'>
+              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
                 <p className='flex-grow text-[#90A6B3]'>
                   DXN added to LP from FoT 0.5%
                 </p>
-                <p className='ml-auto font-bold'>
+                <p className='lg:ml-auto font-bold lg:text-right'>
                   {formattedNum(uiTotalDXNAddedToLP)} DXN (
                   {formattedNum(Number(uiTotalDXNAddedToLP) * dxnPriceInUSD)}{' '}
                   USD)
                 </p>
               </div>
-              <div className='flex mb-4'>
+              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
                 <p className='flex-grow text-[#90A6B3]'>
                   DXN Compounded from FoT 1.5%
                 </p>
-                <p className='ml-auto font-bold'>
+                <p className='lg:ml-auto font-bold lg:text-right'>
                   {' '}
                   {formattedNum(uiTotalDXNStakedFromProfitShare)} DXN (
                   {formattedNum(
