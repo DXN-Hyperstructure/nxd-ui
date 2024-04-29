@@ -683,7 +683,7 @@ const CappedStakingPeriod = () => {
         </h2>
         <span className='text-[#90A6B3]'>
           Claim your referral bonus from the Limited Mint Phase. Bonus can only
-          be claimed after LMP ends.
+          be claimed after 14 days from the LMP start date.
         </span>
         <button
           className={`w-full mt-4 lg:w-full rounded-[8px] ${
