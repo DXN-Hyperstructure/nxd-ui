@@ -461,7 +461,7 @@ const NXDStaking = () => {
           <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
             <p className='flex-grow text-black font-bold'>Claimable ETH</p>
             <p className='lg:ml-auto font-bold text-[#58BD7D] lg:text-right'>
-              {formattedNum(uiUserPendingRewards)} ETH
+              {uiUserPendingRewards.toFixed(8).toLocaleString()} ETH
             </p>
           </div>
           <button
