@@ -121,96 +121,114 @@ const Univ = () => {
     (25000000 / circulatingSupply / circulatingSupply) * 1.003;
 
   return (
-    <div className='mt-4 lg:mt-8 mb-6 mx-2 lg:mx-auto lg:max-w-7xl bg-white rounded-3xl shadow-lg px-4 lg:px-8 py-4 lg:py-8 flex flex-col lg:flex-row'>
-      <div className='flex-1 pr-2 lg:pr-4'>
-        <div className='p-4 lg:p-8'>
-          <h2 className='text-3xl font-bold text-gray-800 mb-6 lg:mb-8'>
-            NXD/DXN Univ2 LP
-          </h2>
-          <h2 className='text-1xl font-bold text-gray-800 mb-4'>
-            Buy NXD from the NXD/DXN Univ2 Locked LP
-          </h2>
-          <h2 className='text-xs font-bold text-gray-800'>Trade NXD/DXN</h2>
-
-          <Link
-            href={`https://app.uniswap.org/#/swap?inputCurrency=${DXN_ERC20_ADDRESS}&outputCurrency=${NXD_ERC20_ADDRESS}&chain=mainnet`}
-            target='_blank'
-            rel='noreferrer noopener'
-          >
-            <button className='w-full lg:w-full rounded-[8px] bg-[#000307] text-white px-9 py-4 mt-6 '>
-              TRADE NXD
-            </button>
-          </Link>
-
-          <p className='flex-grow text-[#90A6B3] text-xs mt-6'>
-            {`Click "Trade NXD" to link the Uniswap link to the NXD/DXN pair`}
-          </p>
+    <div className='mt-4 lg:mt-8 mb-6 mx-2 lg:mx-auto lg:max-w-7xl bg-white rounded-3xl shadow-lg px-4 lg:px-8 py-4 lg:py-8'>
+      <div className='flex flex-col lg:flex-row'>
+        <div className='flex-1 pr-2 lg:pr-4'>
+          <div className='p-4 lg:p-8'>
+            <h2 className='text-3xl font-bold text-gray-800 mb-6 lg:mb-8'>
+              NXD/DXN Univ2 LP
+            </h2>
+            <h2 className='text-1xl font-bold text-gray-800 mb-4'>
+              Buy NXD from the NXD/DXN Univ2 Locked LP
+            </h2>
+            <h2 className='text-xs font-bold text-gray-800'>Trade NXD/DXN</h2>
+            <p className='flex-grow text-[#90A6B3] text-xs mt-6'>
+              {`Click "Trade NXD" to link the Uniswap link to the NXD/DXN pair`}
+            </p>
+            <Link
+              href={`https://app.uniswap.org/#/swap?inputCurrency=${DXN_ERC20_ADDRESS}&outputCurrency=${NXD_ERC20_ADDRESS}&chain=mainnet`}
+              target='_blank'
+              rel='noreferrer noopener'
+            >
+              <button className='w-full lg:w-full rounded-[8px] bg-[#000307] text-white px-9 py-4 mt-6 '>
+                TRADE NXD
+              </button>
+            </Link>
+          </div>
         </div>
-      </div>
-      <div className='flex-1 lg:pl-4'>
-        <div className='p-4 lg:p-8'>
-          <div className='flex flex-col lg:flex-row mb-4'>
-            <div className='flex-1 '>
-              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
-                <p className='flex-grow text-[#90A6B3]'>Total TVL LP</p>
-                <p className=' lg:ml-auto font-bold lg:text-right'>
-                  {formattedNum(nxdReserves)} NXD / {formattedNum(dxnReserves)}{' '}
-                  DXN /{' '}
-                  {formattedNum(dxnPriceInUSD * parseInt(dxnReserves) * 2)} USD
-                </p>
-              </div>
-              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
-                <p className='flex-grow text-[#90A6B3]'>Price Floor NXD/DXN</p>
-                <p className='lg:ml-auto font-bold lg:text-right'>
-                  1 NXD = {nxdFloorPriceInDXN.toFixed(8).toLocaleString()} DXN (
-                  {formattedNum(nxdFloorPriceInDXN * dxnPriceInUSD)} USD)
-                </p>
-              </div>
-              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
-                <p className='flex-grow text-[#90A6B3]'>
-                  NXD Burned from FoT 2%
-                </p>
-                <p className='lg:ml-auto font-bold lg:text-right'>
-                  {formattedNum(uiTotalNXDBurned)} NXD (
-                  {formattedNum(Number(uiTotalNXDBurned) * nxdPriceInUSD)} USD)
-                </p>
-              </div>
-              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
-                <p className='flex-grow text-[#90A6B3]'>
-                  NXD added to LP from FoT 0.5%
-                </p>
-                <p className='lg:ml-auto font-bold lg:text-right'>
-                  {formattedNum(uiTotalNXDAddedToLP)} NXD (
-                  {formattedNum(Number(uiTotalNXDAddedToLP) * nxdPriceInUSD)}{' '}
-                  USD)
-                </p>
-              </div>
-              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
-                <p className='flex-grow text-[#90A6B3]'>
-                  DXN added to LP from FoT 0.5%
-                </p>
-                <p className='lg:ml-auto font-bold lg:text-right'>
-                  {formattedNum(uiTotalDXNAddedToLP)} DXN (
-                  {formattedNum(Number(uiTotalDXNAddedToLP) * dxnPriceInUSD)}{' '}
-                  USD)
-                </p>
-              </div>
-              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
-                <p className='flex-grow text-[#90A6B3]'>
-                  DXN Compounded from FoT 1.5%
-                </p>
-                <p className='lg:ml-auto font-bold lg:text-right'>
-                  {' '}
-                  {formattedNum(uiTotalDXNStakedFromProfitShare)} DXN (
-                  {formattedNum(
-                    Number(uiTotalDXNStakedFromProfitShare) * dxnPriceInUSD
-                  )}{' '}
-                  USD)
-                </p>
+        <div className='flex-1 lg:pl-4'>
+          <div className='p-4 lg:p-8'>
+            <div className='flex flex-col lg:flex-row mb-4'>
+              <div className='flex-1 '>
+                <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
+                  <p className='flex-grow text-[#90A6B3]'>Total TVL LP</p>
+                  <p className=' lg:ml-auto font-bold lg:text-right'>
+                    {formattedNum(nxdReserves)} NXD /{' '}
+                    {formattedNum(dxnReserves)} DXN /{' '}
+                    {formattedNum(dxnPriceInUSD * parseInt(dxnReserves) * 2)}{' '}
+                    USD
+                  </p>
+                </div>
+                <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
+                  <p className='flex-grow text-[#90A6B3]'>
+                    Price Floor NXD/DXN
+                  </p>
+                  <p className='lg:ml-auto font-bold lg:text-right'>
+                    1 NXD = {nxdFloorPriceInDXN.toFixed(8).toLocaleString()} DXN
+                    ({formattedNum(nxdFloorPriceInDXN * dxnPriceInUSD)} USD)
+                  </p>
+                </div>
+                <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
+                  <p className='flex-grow text-[#90A6B3]'>
+                    NXD Burned from FoT 2%
+                  </p>
+                  <p className='lg:ml-auto font-bold lg:text-right'>
+                    {formattedNum(uiTotalNXDBurned)} NXD (
+                    {formattedNum(Number(uiTotalNXDBurned) * nxdPriceInUSD)}{' '}
+                    USD)
+                  </p>
+                </div>
+                <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
+                  <p className='flex-grow text-[#90A6B3]'>
+                    NXD added to LP from FoT 0.5%
+                  </p>
+                  <p className='lg:ml-auto font-bold lg:text-right'>
+                    {formattedNum(uiTotalNXDAddedToLP)} NXD (
+                    {formattedNum(Number(uiTotalNXDAddedToLP) * nxdPriceInUSD)}{' '}
+                    USD)
+                  </p>
+                </div>
+                <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
+                  <p className='flex-grow text-[#90A6B3]'>
+                    DXN added to LP from FoT 0.5%
+                  </p>
+                  <p className='lg:ml-auto font-bold lg:text-right'>
+                    {formattedNum(uiTotalDXNAddedToLP)} DXN (
+                    {formattedNum(Number(uiTotalDXNAddedToLP) * dxnPriceInUSD)}{' '}
+                    USD)
+                  </p>
+                </div>
+                <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-4'>
+                  <p className='flex-grow text-[#90A6B3]'>
+                    DXN Compounded from FoT 1.5%
+                  </p>
+                  <p className='lg:ml-auto font-bold lg:text-right'>
+                    {' '}
+                    {formattedNum(uiTotalDXNStakedFromProfitShare)} DXN (
+                    {formattedNum(
+                      Number(uiTotalDXNStakedFromProfitShare) * dxnPriceInUSD
+                    )}{' '}
+                    USD)
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div className='lg:px-8'>
+        <p className='flex-grow text-[#90A6B3] text-xs mt-6'>
+          Add NXD/DXN liquidity to earn trading fees, FoT is applicable.
+        </p>
+        <Link
+          href={`https://app.uniswap.org/add/v2/${NXD_ERC20_ADDRESS}/${DXN_ERC20_ADDRESS}`}
+          target='_blank'
+          rel='noreferrer noopener'
+        >
+          <button className='w-full lg:w-full rounded-[8px] bg-[#58BD7D] text-white px-9 py-4 mt-6 '>
+            Add NXD/DXN Liquidity
+          </button>
+        </Link>
       </div>
     </div>
   );
