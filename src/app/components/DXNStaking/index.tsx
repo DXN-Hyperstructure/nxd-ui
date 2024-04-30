@@ -89,8 +89,7 @@ const DXNStaking = () => {
     });
 
   const uiTotalDXNStakedDistributionStrat = totalDXNStakedData
-    ? Number(divideByDecimals(totalDXNStakedData.toString(), DXN_DECIMALS)) -
-      Number(uiTotalDXNStakedCompounded)
+    ? Number(divideByDecimals(totalDXNStakedData.toString(), DXN_DECIMALS))
     : '0';
 
   const uiTotalDXNStakedDistributionStratUSD = formattedNum(
