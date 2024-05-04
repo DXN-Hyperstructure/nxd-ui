@@ -4,6 +4,7 @@ import { DBXEN_ABI } from '@/abis/dbxen';
 import { NXD_PROTOCOL_ABI } from '@/abis/nxdprotocol';
 import { TAX_RECIPIENT_ABI } from '@/abis/taxrecipient';
 import useNXDPrice from '@/app/hooks/useNXDPrice';
+import useToastOnWriteContractError from '@/app/hooks/useToastOnWriteContractError';
 import {
   DBXEN_ADDRESS,
   DXN_DECIMALS,
@@ -14,9 +15,12 @@ import {
   TAX_RECIPIENT_ADDRESS,
 } from '@/consts';
 import { divideByDecimals, formattedNum } from '@/utils';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { erc20Abi } from 'viem';
-import { useBalance, useReadContract } from 'wagmi';
+import { useBalance, useReadContract, useWriteContract } from 'wagmi';
+import NotificationContent from '../NotificationContent';
+import { toast } from 'react-toastify';
+import Spinner from '../Spinner';
 const DXNStaking = () => {
   const { data: currentCycleData } = useReadContract({
     address: DBXEN_ADDRESS,
@@ -30,10 +34,6 @@ const DXNStaking = () => {
     functionName: 'accStakeCycle',
     args: [NXD_PROTOCOL_ADDRESS, BigInt(currentCycleData?.toString() || '0')],
   });
-
-  const uiProtocolStakedDXN = protocolStakedDXN
-    ? divideByDecimals(protocolStakedDXN.toString(), 18)
-    : '0';
 
   const { dxnPriceInUSD, ethPriceInUSD, nxdPriceInUSD } = useNXDPrice();
 
@@ -182,6 +182,47 @@ const DXNStaking = () => {
     Number(uiOurClaimableFees) * ethPriceInUSD
   );
 
+  const {
+    writeContract,
+    error: writeContractError,
+    data: writeContractData,
+    isSuccess,
+    isError,
+    isPending,
+    status,
+    failureReason,
+  } = useWriteContract({});
+  const onClaim = () => {
+    try {
+      writeContract({
+        abi: NXD_PROTOCOL_ABI,
+        address: NXD_PROTOCOL_ADDRESS,
+        functionName: 'collectFees',
+        args: [],
+      });
+    } catch (error) {}
+  };
+  useToastOnWriteContractError({
+    writeContractError,
+    isError,
+  });
+  useEffect(() => {
+    if (writeContractData)
+      toast(
+        <NotificationContent
+          transactionHash={writeContractData}
+          action={'Claim'}
+          onSuccess={() => {}}
+        />,
+        {
+          autoClose: false,
+          hideProgressBar: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      );
+  }, [writeContractData]);
   return (
     <div className='mt-4 lg:mt-8 mb-6 mx-2 lg:mx-auto lg:max-w-7xl bg-white rounded-3xl shadow-lg px-4 lg:px-8 py-4 lg:py-8 flex flex-col lg:flex-row'>
       <div className='flex-1 pr-2 lg:pr-4'>
@@ -291,6 +332,18 @@ const DXNStaking = () => {
                   {uiOurClaimableFeesUSD} USD)
                 </p>
               </div>
+              <button
+                className={`w-full lg:w-full rounded-[8px] bg-[#000307] text-white px-9 py-4 mt-6 ${
+                  !isPending && uiOurClaimableFees != '0'
+                    ? 'hover:opacity-90'
+                    : 'cursor-not-allowed opacity-50'
+                } flex items-center gap-2 justify-center`}
+                onClick={onClaim}
+                disabled={isPending || uiOurClaimableFees === '0'}
+              >
+                {isPending ? <Spinner /> : <></>}
+                Claim
+              </button>
             </div>
           </div>
         </div>
