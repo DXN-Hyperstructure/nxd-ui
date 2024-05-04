@@ -50,18 +50,14 @@ const ReferralBlock = () => {
       toast(
         <NotificationContent
           transactionHash={writeContractData}
-          // transactionHash='0x41315b70ab0e7b12f0cfcecbd1d8dcaa5533a576d1222fc78540f43742aaabfe'
           action='Create Referral Link'
           onSuccess={() => {
             refetchUserReferralCode();
-            console.log('transaction success');
           }}
         />,
         {
-          // position: 'top-center',
           autoClose: false,
           hideProgressBar: true,
-          // closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,

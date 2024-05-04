@@ -100,8 +100,6 @@ const NXDStaking = () => {
       }
     : null;
 
-  console.log('userWithdrawalRequest = ', userWithdrawalRequest);
-
   const {
     writeContract,
     error: writeContractError,

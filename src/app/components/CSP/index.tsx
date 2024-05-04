@@ -70,25 +70,15 @@ const CappedStakingPeriod = () => {
     isPending,
     status,
     failureReason,
-  } = useWriteContract({
-    mutation: {
-      onSettled: () => {
-        console.log('onSettled');
-      },
-      onSuccess: () => {
-        console.log('onSuccess success');
-      },
-    },
-  });
+  } = useWriteContract({});
 
   useToastOnWriteContractError({
     isError,
     writeContractError,
   });
-  const waitForTxResult = useWaitForTransactionReceipt({
+  useWaitForTransactionReceipt({
     hash: data,
   });
-  console.log('writeContractError = ', writeContractError);
 
   useEffect(() => {
     if (data)
@@ -255,23 +245,6 @@ const CappedStakingPeriod = () => {
     });
   }, [connectedUserAddress]);
 
-  // console.log('isPending = ', isPending);
-  // console.log('isSuccess = ', isSuccess);
-  // console.log('isError = ', isError);
-  // console.log('publicClient, = ', publicClient);
-  // console.log('writeContractError, = ', writeContractError);
-  // console.log('status, = ', status);
-  // console.log('connectedUserAddress, = ', connectedUserAddress);
-  // console.log('failureReason,, = ', failureReason);
-  // console.log('data,, = ', data);
-
-  // const { data: testData } = useReadContract({
-  //   abi: NXD_PROTOCOL_ABI,
-  //   address: NXD_PROTOCOL_ADDRESS,
-  //   functionName: 'nxd',
-  // });
-  // console.log('testData = ', testData);
-
   const [amountToDeposit, setAmountToDeposit] = useState<string | null>(null);
   const [referralCode, setReferralCode] = useState<string | null>(null);
   const [allowDynamicAmounts, setAllowDynamicAmounts] = useState(false);
@@ -322,7 +295,7 @@ const CappedStakingPeriod = () => {
         // chainId: 1337,
       });
     } catch (error) {
-      console.log('Error minting NXD', error);
+      console.log('Error approving NXD', error);
     }
   };
 
@@ -588,7 +561,6 @@ const CappedStakingPeriod = () => {
                   <button
                     className='absolute inset-y-0 right-0 flex items-center pr-3 text-blue-500 hover:opacity-90'
                     onClick={() => {
-                      console.log('userDXNBalaneData = ', userDXNBalaneData);
                       setAmountToDeposit(userDXNBalaneData);
                     }}
                   >
