@@ -371,6 +371,14 @@ const Protocol = () => {
                   {formattedNum(totalNXDBurnPerTotalSupply)}%
                 </p>
               </div>
+              <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-2'>
+                <p className='flex-grow text-[#90A6B3]'>
+                  Effective NXD Supply (Total Supply NXD - NXD Burned)
+                </p>
+                <p className='lg:ml-auto font-bold lg:text-right'>
+                  {formattedNum(circulatingSupply)} NXD
+                </p>
+              </div>
 
               <div className='flex flex-col gap-1 lg:gap-0 lg:flex-row mb-2'>
                 <p className='flex-grow text-[#90A6B3]'>
