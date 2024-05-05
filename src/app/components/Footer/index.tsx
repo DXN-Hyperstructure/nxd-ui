@@ -34,7 +34,7 @@ const Footer = () => {
         </div>
 
         <div className='text-center md:text-left w-full md:w-auto'>
-          <span className='text-[#90A6B3]'>Join our official socials</span>
+          <span className='text-[#90A6B3]'>Find us on</span>
           <div className='flex items-center justify-center md:justify-start mt-2'>
             <div className='flex items-center gap-4'>
               <a
@@ -88,6 +88,18 @@ const Footer = () => {
                   height={32}
                 />
               </a>
+              <Link
+                href='https://www.dextools.io/app/en/ether/pair-explorer/0x98134cde70ff7280bb4b9f4eba2154009f2c13ac?t=1714900702206                '
+                target='_blank'
+                rel='noreferrer noopener'
+              >
+                <Image
+                  src={'/DEXTools_ white.png'}
+                  alt='GitHub'
+                  width={100}
+                  height={100}
+                />
+              </Link>
             </div>
           </div>
         </div>
