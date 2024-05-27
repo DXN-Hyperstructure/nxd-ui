@@ -260,7 +260,9 @@ const AddLiquidity = ({
     <div className='flex flex-col md:flex-row gap-2 items-start'>
       <div className='min-w-[50%]'>
         <div className='flex flex-col gap-6 p-4 lg:p-8 lg:py-0'>
-          <h2 className='text-3xl font-bold text-gray-800'>Add Liquidity</h2>
+          <h2 className='text-3xl font-bold text-gray-800'>
+            Create NXD Liquidity without FoT
+          </h2>
           <p className='flex-grow text-[#90A6B3] text-xs '>
             Tip: When you add liquidity, you will receive pool tokens
             representing your position. These tokens automatically earn fees
@@ -294,6 +296,19 @@ const AddLiquidity = ({
               }}
               balance={userDXNBalaneData ? userDXNBalaneData : '0'}
             />
+            <Link
+              href='https://app.uniswap.org/remove/v2/0x70536D44820fE3ddd4A2e3eEdbC937b8B9D566C7/0x80f0C1c49891dcFDD40b6e0F960F84E6042bcB6F'
+              target='_blank'
+              rel='noreferrer noopener'
+              className='flex items-center gap-1 text-blue-500'
+            >
+              <span>Remove NXD Liquidity without FoT here</span>
+              <img
+                src='/external-link.svg'
+                className='w-4 h-4'
+                alt='external-link'
+              />
+            </Link>
           </div>
         </div>
       </div>
@@ -526,7 +541,7 @@ const Univ = () => {
         <div className='flex-1 pr-2 lg:pr-4'>
           <div className='p-4 lg:p-8'>
             <h2 className='text-3xl font-bold text-gray-800 mb-6 lg:mb-8'>
-              NXD/DXN Univ2 LP
+              NXD/DXN Base Pair LP
             </h2>
             <h2 className='text-1xl font-bold text-gray-800 mb-4'>
               Buy NXD from the NXD/DXN Univ2 Locked LP
