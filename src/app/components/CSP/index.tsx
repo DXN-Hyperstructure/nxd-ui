@@ -32,7 +32,6 @@ import { toast } from 'react-toastify';
 import useToastOnWriteContractError from '@/app/hooks/useToastOnWriteContractError';
 import { useQueryClient } from '@tanstack/react-query';
 import { useSearchParams } from 'next/navigation';
-import { sepolia } from 'viem/chains';
 import NotificationContent from '../NotificationContent';
 
 const CappedStakingPeriod = () => {
@@ -85,7 +84,6 @@ const CappedStakingPeriod = () => {
       toast(
         <NotificationContent
           transactionHash={data}
-          // transactionHash='0x41315b70ab0e7b12f0cfcecbd1d8dcaa5533a576d1222fc78540f43742aaabfe'
           action={
             buttonClicked == 'MINT'
               ? 'Mint'
@@ -108,7 +106,6 @@ const CappedStakingPeriod = () => {
                 {
                   address: NXD_ERC20_ADDRESS,
                   functionName: 'totalSupply',
-                  chainId: 1337,
                 },
               ],
             });
@@ -118,7 +115,6 @@ const CappedStakingPeriod = () => {
                 {
                   address: NXD_PROTOCOL_ADDRESS,
                   functionName: 'totalDXNStaked',
-                  chainId: 1337,
                 },
               ],
             });
@@ -128,7 +124,6 @@ const CappedStakingPeriod = () => {
                 {
                   address: NXD_PROTOCOL_ADDRESS,
                   functionName: 'totalDXNDepositedLMP',
-                  chainId: 1337,
                 },
               ],
             });
@@ -138,7 +133,6 @@ const CappedStakingPeriod = () => {
                 {
                   address: NXD_ERC20_ADDRESS,
                   functionName: 'totalSupply',
-                  chainId: 1337,
                 },
               ],
             });
@@ -148,7 +142,6 @@ const CappedStakingPeriod = () => {
                 {
                   address: NXD_PROTOCOL_ADDRESS,
                   functionName: 'totalDXNStaked',
-                  chainId: 1337,
                 },
               ],
             });
@@ -158,7 +151,6 @@ const CappedStakingPeriod = () => {
                 {
                   address: NXD_PROTOCOL_ADDRESS,
                   functionName: 'totalDXNDepositedLMP',
-                  chainId: 1337,
                 },
               ],
             });
@@ -189,7 +181,6 @@ const CappedStakingPeriod = () => {
         {
           address: NXD_ERC20_ADDRESS,
           functionName: 'totalSupply',
-          chainId: 1337,
         },
       ],
     });
@@ -199,7 +190,6 @@ const CappedStakingPeriod = () => {
         {
           address: NXD_PROTOCOL_ADDRESS,
           functionName: 'totalDXNStaked',
-          chainId: 1337,
         },
       ],
     });
@@ -209,7 +199,6 @@ const CappedStakingPeriod = () => {
         {
           address: NXD_PROTOCOL_ADDRESS,
           functionName: 'totalDXNDepositedLMP',
-          chainId: 1337,
         },
       ],
     });
@@ -219,7 +208,6 @@ const CappedStakingPeriod = () => {
         {
           address: NXD_ERC20_ADDRESS,
           functionName: 'totalSupply',
-          chainId: 1337,
         },
       ],
     });
@@ -229,7 +217,6 @@ const CappedStakingPeriod = () => {
         {
           address: NXD_PROTOCOL_ADDRESS,
           functionName: 'totalDXNStaked',
-          chainId: 1337,
         },
       ],
     });
@@ -239,7 +226,6 @@ const CappedStakingPeriod = () => {
         {
           address: NXD_PROTOCOL_ADDRESS,
           functionName: 'totalDXNDepositedLMP',
-          chainId: 1337,
         },
       ],
     });
@@ -256,16 +242,12 @@ const CappedStakingPeriod = () => {
       functionName: 'allowance',
       args: [connectedUserAddress || zeroAddress, NXD_PROTOCOL_ADDRESS],
     });
-  const { data: dxnData } = useReadContract({
-    address: NXD_PROTOCOL_ADDRESS,
-    abi: NXD_PROTOCOL_ABI,
-    functionName: 'dxn',
-  });
+
   const needsAllowance: boolean = userAllowanceData
     ? Number(divideByDecimals(userAllowanceData.toString(), DXN_DECIMALS)) <
       Number(amountToDeposit)
     : true;
-  // const needsAllowance: boolean = false;
+
   const onMintNXDClick = () => {
     try {
       if (!amountToDeposit) return;
@@ -292,7 +274,6 @@ const CappedStakingPeriod = () => {
         address: DXN_ERC20_ADDRESS,
         functionName: 'approve',
         args: [NXD_PROTOCOL_ADDRESS, maxUint256],
-        // chainId: 1337,
       });
     } catch (error) {
       console.log('Error approving NXD', error);
@@ -447,8 +428,8 @@ const CappedStakingPeriod = () => {
     100
   ).toFixed(5);
 
-  return (
-    <div className='mt-4 lg:mt-8 mb-6 mx-2 lg:mx-auto lg:max-w-7xl bg-white rounded-3xl shadow-lg px-4 lg:px-8 py-4 lg:py-8'>
+  const LMPParticipation = () => {
+    return (
       <div className='flex flex-col lg:flex-row'>
         <div className='flex-1 pr-2 lg:pr-4'>
           <div className='p-4 lg:p-8'>
@@ -649,6 +630,11 @@ const CappedStakingPeriod = () => {
           </div>
         </div>
       </div>
+    );
+  };
+
+  return (
+    <div className='mt-4 lg:mt-8 mb-6 mx-2 lg:mx-auto lg:max-w-7xl bg-white rounded-3xl shadow-lg px-4 lg:px-8 py-4 lg:py-8'>
       <div className='p-4 lg:p-8'>
         <h2 className='text-3xl font-bold text-gray-800 mb-2'>
           Claim Referral Bonus

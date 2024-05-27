@@ -19,6 +19,9 @@ const NotificationContent = ({
     | 'Unstake'
     | 'Unstake With Penalty'
     | 'Claim'
+    | 'Add Liquidity'
+    | 'Approve NXD'
+    | 'Approve DXN'
     | 'Create Referral Link';
   onSuccess?: () => void;
 }) => {
