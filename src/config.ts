@@ -1,27 +1,23 @@
 'use client';
 import '@rainbow-me/rainbowkit/styles.css';
-import { http, createConfig } from 'wagmi';
-import { localhost, mainnet, sepolia } from 'wagmi/chains';
+import { http, fallback, unstable_connector } from 'wagmi';
+import { localhost, mainnet } from 'wagmi/chains';
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
-
-// export const config = createConfig({
-//   chains: [mainnet, sepolia],
-//   ssr: true,
-//   transports: {
-//     [mainnet.id]: http(),
-//     [sepolia.id]: http(),
-//   },
-// });
+import { injected } from 'wagmi/connectors';
 
 export const config = getDefaultConfig({
   appName: 'NXD Protocol',
   projectId: '06799cb86c8f369de15149ecdbcc2755',
   chains: [
     mainnet,
-    // sepolia, localhost
+    // sepolia,
+    localhost,
   ],
+
   transports: {
-    [mainnet.id]: http(),
+    [mainnet.id]: fallback([unstable_connector(injected), http()]),
+    [localhost.id]: http(),
   },
+
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
