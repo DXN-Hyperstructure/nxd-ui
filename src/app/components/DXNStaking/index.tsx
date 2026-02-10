@@ -317,7 +317,7 @@ const DXNStaking = () => {
                 <p className='flex-grow text-[#90A6B3]'>NXD Staking Vault</p>
                 <p className='lg:ml-auto font-bold lg:text-right'>
                   {formattedNum(uiEthToStakingVault)} ETH (
-                  {formattedNum(Number(uiEthToStakingVaultUSD))} USD)
+                  {uiEthToStakingVaultUSD} USD)
                 </p>
               </div>
 
