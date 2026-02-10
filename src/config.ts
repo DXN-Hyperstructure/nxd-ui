@@ -15,7 +15,15 @@ export const config = getDefaultConfig({
   ],
 
   transports: {
-    [mainnet.id]: fallback([unstable_connector(injected), http()]),
+    [mainnet.id]: fallback([
+      unstable_connector(injected),
+      http('https://ethereum-rpc.publicnode.com'),
+      http('https://0xrpc.io/eth'),
+      http('https://eth.blockrazor.xyz'),
+      http('https://rpc.flashbots.net/fast'),
+      http('https://rpc.flashbots.net'),
+      http(),
+    ]),
     [localhost.id]: http(),
   },
 
